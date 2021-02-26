@@ -1,5 +1,9 @@
 package com.example.realsimon;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,9 +19,9 @@ public class Game extends AppCompatActivity {
 
     List<Button> sequence = new ArrayList<Button>();
     Button[] lights;
-    Integer pointer = 0; // Button click sequence
-    Integer seq_pointer = 0; // So we know how far in the sequence we are
-    Integer score = 0;
+    Integer pointer = 0; // Clicks per sequence run-through
+    Integer seq_pointer = 0; // Overall how far we are in the sequence
+    Integer score = 0; // Score I never implemented
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,10 +114,31 @@ public class Game extends AppCompatActivity {
 
     private void youWin() {
         Log.i("Game", "You win!");
+        new AlertDialog.Builder(this)
+                .setTitle("You win!")
+                .setPositiveButton(R.string.play_again, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        playAgain();
+                    }
+                }).show();
     }
 
     private void youLose() {
         Log.i("Game", "You lose! :(");
+        new AlertDialog.Builder(this)
+                .setTitle("You lost..")
+                .setPositiveButton(R.string.play_again, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        playAgain();
+                    }
+                }).show();
+    }
+
+    private void playAgain() {
+        Intent intent = new Intent(this.getApplicationContext(), MainActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     private void enableButtons() {

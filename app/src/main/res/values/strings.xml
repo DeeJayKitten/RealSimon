@@ -2,4 +2,6 @@
     <string name="app_name">Simon</string>
     <string name="button_play">PLAY</string>
     <string name="input_sequence">Sequence</string>
+    <string name="play_again">Play Again</string>
+    <string name="quit">Quit</string>
 </resources>

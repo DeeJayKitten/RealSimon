@@ -79,7 +79,7 @@ public class Game extends AppCompatActivity {
     private void flashSequence() {
         disableButtons();
         int delay = 1000;
-        for (int i = 0; i < seq_pointer; i++) { // only show as far as the pointer goes
+        for (int i = 0; i < seq_pointer+1; i++) { // only show as far as the pointer goes
             Button light = sequence.get(i);
             flashButton(light, delay);
             delay += 1000;

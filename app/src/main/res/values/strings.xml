@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Simon</string>
+    <string name="button_play">PLAY</string>
+    <string name="input_sequence">Sequence</string>
+</resources>
